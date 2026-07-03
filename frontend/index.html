@@ -7,25 +7,25 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div id="nav-bar">
-        <a href="/"> Home</a>
-        <a href="https://github.com" target="_blank">GitHub</a>
-        <a href="https://leetcode.com" target="_blank">LeetCode</a>
-        <a href="https://codeforces.com" target="_blank">Codeforces</a>
-        <a href="https://codechef.com" target="_blank">CodeChef</a>
-        <a href="./pages/autosuggest.html" target="_blank">AutoSuggest</a>
+    <div id="nav">
+        <a href="/">Home</a>
+        <a href="https://github.com" target="_blank">Github</a>
+        <a href="https://www.leetcode.com" target="_blank">Leetcode</a>
+        <a href="https://www.hackerrank.com" target="_blank">Hackerrank</a>
+        <a href="./pages/auto-suggest.html" target="_blank">Auto Suggest</a>
     </div>
     <div id="home-intro">
-        <h1>Home page</h1>
-            <p id="operation-info"> Operations on user card</p>
-            <p id="feature-info"> Toggle, get random user and much more</p>
+        <h1> Home Page </h1>
+        <p id="p1"> Operations on user card </p>
+        <p id="p2"> Toggle, Get random user and much more </p>
     </div>
     <div id="card">
         <div id="card-img">
-        <img src="./images/jane.png" alt="no img found">
+            <img id="img" src="./images/jane.png">
         </div>
-        <h1 id="card-name">Jane Doe</h1>
-        <p id="card-gender">Female</p>
+        <h1 id="card-name"> Jane Doe </h1>
+        <p id="card-gender"> Female </p>
+        <button onclick="toggle()">Toggle</button>
     </div>
     <script src="index.js"></script>
 </body>

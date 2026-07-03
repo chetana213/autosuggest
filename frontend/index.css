@@ -1,49 +1,45 @@
-h1 {
-    color: red;
+h1{
+    color: rgb(104, 160, 224);
 }
-#home-intro {
-    text-align: center;
-    border: 3px solid blueviolet;
-    background-color: white;
-    border-radius: 10px;
-}
-#home-intro:hover {
-    background-color: lightgrey;
-}
-p#feature-info {
+#p2{
     color: blue;
 }
-#nav-bar {
+#home-intro {
+    border: 3px solid rgb(104, 160, 224);
+    background-color: white;
+    /*border: 3px;
+    border-color: black;
+    border-style: solid;*/
     text-align: center;
-    background-color: brown;
+}
+#home-intro:hover{
+    background-color:lightgrey
+}
+#nav{
+    text-align: center;
+    background-color: rgb(104, 160, 224);
     height: 25px;
     padding-top: 5px;
     margin-bottom: 10px;
 }
-#nav-bar a {
+#nav a{
     margin: 0px 5px;
+    /*margin: y-axis x-axis*/
     text-decoration: none;
     color: white;
 }
-#card {
-    margin: 0px auto;
-    margin-top: 10px;
-    text-align: center; 
+#card{
+    text-align: center;
 }
-
-#card-img {
-    width: 300px;
+#card-img{
+    width:300px;
     height: 300px;
     margin: 0 auto;
+    align-items: center;
 }
-
-img {
-    width: 300px;
-    height: 300px;
+#card-img img{
+    width: 100%;
+    height: auto;
     display: block;
-    margin: 0 auto; 
-}
-
-#card h1, #card p {
-    text-align: center;
+    margin: 0 auto;
 }
