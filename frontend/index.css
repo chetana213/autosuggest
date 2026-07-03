@@ -14,3 +14,15 @@ h1{
 p#feature-info{
     color: blue;
 }
+#nav-bar{
+    text-align: center;
+    background-color:brown;
+    height:25px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+}
+#nav-bar a{
+    margin: 0px 5px;
+    text-decoration: none;
+    color:white;
+}
