@@ -9,7 +9,7 @@
     <div class="container">
         <div class="icons-row">
             <span class="gear-icon">&#9881;</span>
-            <span class="status-icons">&#8226; online | &#9202; ms</span>
+            <span class="status-icons">&#8226; online | <span id="ping-value">&#9202;</span> ms</span>
         </div>
 
         <main style="text-align: center;">
@@ -29,6 +29,7 @@
     <style>
         body {
             margin: 0;
+            font-family: Arial, sans-serif;
         }
         .container {
             padding: 20px;
@@ -66,22 +67,23 @@
             pointer-events: none;
         }
         .suggestions-box {
-            display: none;
-            margin: 20px auto 0 auto;
-            padding: 20px;
+            margin: 4px auto 0 auto; /* Reduced from 20px to 4px to pull it close to the input */
+            padding: 10px 0; /* Clean listing look */
             border: 1px solid black;
-            border-radius: 5px;
+            border-radius: 8px; /* Standard tidy rounded corners */
             min-height: 10px;
-            text-align: center;
+            text-align: left; /* Tidy auto-suggest look */
             width: 40%;
             box-sizing: border-box;
             background-color: #f9f9f9;
+            display: none; /* Managed completely by script matching character presence */
         }
-        .suggestions-box:hover {
-            display: block;
-        }ayout cluster area */
-        .search-box:hover + .suggestions-box {
-            display: block;
+        .suggestions-box div {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+        .suggestions-box div:hover {
+            background-color: #e5e5e5;
         }
         input {
             width: 100%;
@@ -98,5 +100,57 @@
             color: black; 
         }
     </style>
+
+    <script>
+        // Target the actual text input element rather than the container wrapper
+        var searchInput = document.getElementById('search-input');
+        var suggestionsBox = document.getElementById('suggestions-container');
+
+        searchInput.addEventListener('input', function() {
+            var userText = searchInput.value;
+
+            // Proper check for empty input or strings containing only spaces
+            if (userText.trim() === "") {
+                suggestionsBox.style.display = 'none';
+                suggestionsBox.innerHTML = "";
+                return;
+            }
+
+            // Cleaned URL construction with your variables matching user input value
+            var url1 = "https://autosuggest-backend.onrender.com/api/autosuggest?q=";
+            var url3 = "&algorithm=brute&limit=10&weighted=false";
+            var url = url1 + encodeURIComponent(userText) + url3;
+
+            fetch(url)
+                .then(function(response) {
+                    return response.json(); // First and only json conversion required
+                })
+                .then(function(data) {
+                    console.log(data);
+                    
+                    // Checked your expected array object naming conventions safely 
+                    var resultsArray = data.results || []; 
+                    
+                    if (resultsArray.length === 0) {
+                        suggestionsBox.style.display = 'none';
+                        return;
+                    }
+
+                    var htmlResults = "";
+                    for (var i = 0; i < resultsArray.length; i++) {
+                        // Safely rendering strings or fallback strings depending on return shape
+                        var textValue = resultsArray[i].text || resultsArray[i];
+                        htmlResults += "<div>" + textValue + "</div>";
+                    }
+
+                    // Display results and unhide the elements immediately
+                    suggestionsBox.innerHTML = htmlResults;
+                    suggestionsBox.style.display = 'block';
+                })
+                .catch(function(error) {
+                    console.error("Error fetching suggestions:", error);
+                });
+        });
+    </script>
 </body>
 </html>
