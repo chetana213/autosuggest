@@ -3,40 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BeingInfinity</title>
 </head>
 <body>
-    <div style="padding: 20px;">
-        <div style="margin-bottom: 30px;">
-            <span style="float: left;"> &#9881;</span>
-            <span style="float: right;"> &#8226; online | &#9202 ms</span>
-            <div style="clear: both;">
+    <div class="container">
+        <div class="icons-row">
+            <span class="gear-icon">&#9881;</span>
+            <span class="status-icons">&#8226; online | &#9202; ms</span>
+        </div>
+
+        <main style="text-align: center;">
+            <h1>
+                <span class="being">Being</span><span class="infinity">Infinity</span>
+            </h1>
+            <p>One million phrases. Four algorithms. Prefix-based auto suggest.</p>
+            
+            <div id="search-box-container" class="search-box">
+                <span class="search-icon">&#128270;</span>
+                <input id="search-input" type="text" placeholder="Start typing to search...">
             </div>
-        </div>
-        <h1> Being Infinity </h1>
-        <p> One million phrases. Four algorithms. Prefix-based auto suggest.</p>
-        <div style="text-align: center;">
-            <span> 	&#128270 <input placeholder="Start typing to search..."></span>
-        </div>
+            <div id="suggestions-container" class="suggestions-box"></div>
+        </main>
     </div>
+
     <style>
+        body {
+            margin: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .icons-row {
+            margin-bottom: 20px; 
+            display: flex;
+            justify-content: space-between;
+        }
         h1 {
             text-align: center;
             margin: 0 0 20px 0;
+            font-size: 2.5em;
+            line-height: 1.2;
+            letter-spacing: 0.05em;
         }
         p {
             text-align: center;
             margin: 0 0 30px 0;
+            font-size: 1em;
+            line-height: 1.4; 
         }
-        div[style*="text-align: center"] {
-            margin-top: 50px;
+        .search-box {
+            position: relative;
+            width: 40%;
+            margin: 20px auto 0 auto;
+            display: flex;
+            align-items: center;
+        }
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            font-size: 14px;
+            color: #666;
+            pointer-events: none;
+        }
+        .suggestions-box {
+            display: none;
+            margin: 20px auto 0 auto;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+            min-height: 10px;
+            text-align: center;
+            width: 40%;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+        .suggestions-box:hover {
+            display: block;
+        }ayout cluster area */
+        .search-box:hover + .suggestions-box {
+            display: block;
         }
         input {
-            width: 300px;
-            height: 30px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            padding: 5px;
+            width: 100%;
+            height: 38px;
+            border-radius: 20px;
+            border: 1px solid black;
+            padding: 0 10px 0 35px;
+            box-sizing: border-box;
+        }
+        .being {
+            color: #007BFF; 
+        }
+        .infinity {
+            color: black; 
         }
     </style>
 </body>
